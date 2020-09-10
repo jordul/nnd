@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <style>
+            h1 {
+                color: #5BCDCF;
+                text-align: center;
+            }
+
+ 
+
+            .root{
+                margin-left: 26%;
+            }
+
+ 
+
+            .text-center{
+                margin-right: 35%;
+            }
+
+ 
+
+            .textarea{
+                width: 700px;
+            }
+
+ 
+
+            #inputDireccion{
+                width: 330px;
+            }
+
+ 
+
+        </style>
+</head>
+<body>
+    <h1><strong>ingreso de un número</strong></h1>
+    <br>
+    <div class="root">
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+                <label for="numero"><strong>Teléfono: </strong> </label>
+                        <input type="number" id="inputNumero" class="form-control" placeholder="Numero" id="Numero" name="Numero" required><br>
+            </div>
+        </div>
+        <button onclick="getlength()">Next</button>
+    </div>
+    <script>
+        function getlength() {
+            let number= document.getElementById("inputNumero").value;
+            alert("Numero de Digitos: "+ number.toString().length); 
+        }
+    </script>
+</body>
+</html>

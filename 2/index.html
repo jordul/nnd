@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .righ{
+            background: palegreen;
+        }
+        .wrong{
+            background: salmon;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="question"></div>
+    <button onclick="printHTMLQuestion(currentQuestionIndex)">Next</button>
+
+    <p>Righ Answer: <span class="RighCounter">0</span></p>
+    <p>Wrong Answer: <span class="WrongCounter">0</span></p>
+    <script>
+        let righAnswer;
+        let currentQuestionIndex=0;
+        let righ=0;
+        let wrong=0;
+        const cuestionary =[
+            {"question": '¿Quien descubrio america?',
+            "answer": ['Colon','Popeye','Escobar','Tu']
+            },
+            {"question": '¿Quien es Popeye?',
+            "answer": ['Una caricatura','Asesino','Politico','Tu amigo']
+            },
+            {"question": '¿Cual es el apodo de Radamel Falcao?',
+            "answer": ['El tigre','Popeye','Goleador','The Team']
+            }
+        ];
+
+        const printHTMLQuestion = (i) => {
+            currentQuestionIndex++;
+            const q = cuestionary[i];
+            let a = q.answer;
+            righAnswer = a[0]
+            a = a.sort((a,b) => Math.floor(Math.random()*3)-1);
+            const htmlAnswer = a.map(currentA => `<p class="answer"><button onClick="evaluateAnswer('${currentA}', this)">
+            x</button><span>${currentA}</span></p>`)
+            .join(' ');
+
+            let htmlQuestionCode = `<p>${q.question}</p><div>${htmlAnswer}</div>`;
+            document.querySelector('.question').innerHTML = htmlQuestionCode;
+        }
+        const evaluateAnswer = (answer, obj) =>{
+            document.querySelectorAll('.answer').forEach(a => a.classList.remove('righ','wrong'))
+            const parentP = obj.parentNode;
+            if(answer == righAnswer){
+                parentP.classList.add('righ');
+                righ++;
+                document.querySelector('.RighCounter').innerHTML = righ;
+            }else{
+                parentP.classList.add('wrong');
+                wrong++;
+                document.querySelector('.WrongCounter').innerHTML = wrong;
+            }
+        }
+
+        printHTMLQuestion(currentQuestionIndex);
+    </script> 
+</body>
+</html>
